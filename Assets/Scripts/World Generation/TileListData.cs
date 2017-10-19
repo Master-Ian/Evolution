@@ -15,6 +15,15 @@ public class TileListData : MonoBehaviour {
         }
     }
 
+    public GameObject getTileAtLocation(Vector2Int location)
+    {
+        return tileArray[location.x, location.y];
+    }
+    
+    public GameObject[,] getTileArray()
+    {
+        return tileArray;
+    }
     public int getMapSize()
     {
         return MAP_SIZE;

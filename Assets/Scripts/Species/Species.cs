@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Species : MonoBehaviour
 {
-    public GameObject WebInstance;  // The web to use as a reference when evolving
     private string speciesName;  // name of species - for stretch goal, we will want this to be a string that appears like formal latin names, by D3, number will suffice
     private List<Vector2Int> location; // in which tiles this species exists.  Assuming tiles can be simplified to their numerical value
     private List<int> genes;  // what genes this species has.  Assuming genes can be simplified to their numerical value
-    private int[] herbivoreFoodSource; // i == 0 berries, i == 1 nuts, i == 2 grass, i == 3 leaves, 0 (default) means speceis cannot eat food type at given index
+    private int[] herbivoreFoodSource; // i == 0 berries, i == 1 nuts, i == 2 grass, i == 3 leaves, value of 0 at any index (default) means speceis cannot eat food type at given index
     private int carnivoreFoodSource; // integer between 1 and 500 that limits what size prey you can eat, -1 (default) means species cannot eat meat
     private int amntCalories; // amount of food to survive
     private int creatureSize; // 1 is tiny, 2 - 100 is small, 101 - 200 is medium, 201 - 300 is large, 301 - 400 is humongous
@@ -21,8 +20,9 @@ public class Species : MonoBehaviour
     /*
     *   Constructor
     */
-    public Species()
+    public Species(string speciesName)
     {
+        this.speciesName = speciesName;
     }
 
     /*
@@ -58,7 +58,7 @@ public class Species : MonoBehaviour
         {
             op = -1;
         }
-        Node node = WebInstance.GetComponent<Web>().getNode(nodeIndex);
+        Node node = GameObject.Find("Web Builder").GetComponent<buildWeb>().getWeb().getNode(nodeIndex);
         // Added a node
         for (int i = 0; i < herbivoreFoodSource.Length; i++)
         {
@@ -75,9 +75,9 @@ public class Species : MonoBehaviour
     }
 
     /*
-     *  Deep copy of species instance of passed species.  Randomly adds/subtractes node for bot, lets player choose node, and sends other to evolve()
+     *  Deep copy of species instance of passed species
      */
-    public void clone(Species other, bool isPlayer) // other will be evolved, clone will be parent species
+    public void clone(Species other) // other will be evolved, clone will be parent species
     {
         Init(other.getSpeciesName(), other.getLocation(), other.getGenes(), other.getHFS(), other.getCFS(), other.getAmntCalories(), 
             other.getCreatureSize(), other.getMaxPerTile(), other.getLitterSize(), other.getMatingFrequency(), getMateAttachment(), other.getPeckingOrder());

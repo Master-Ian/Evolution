@@ -18,6 +18,15 @@ public class Node
     public Node(string name)
     {
         this.name = name;
+        herbivoreFoodSource = new int[4];
+        carnivoreFoodSource = 0;
+        amntCalories = 0;
+        creatureSize = 0;
+        maxPerTile = 0;
+        litterSize = 0;
+        matingFrequency = 0;
+        mateAttachment = 0;
+        peckingOrder = 0;
     }
 
     public string getName()

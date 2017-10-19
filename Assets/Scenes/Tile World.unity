@@ -112,6 +112,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &73550179 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1010053404371570, guid: 43944ea185894854ab76a738d97920b1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1800995431}
+--- !u!114 &73550180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 73550179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f3c424a1050924ba51ec97d3ab4a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &93494058
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +932,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1010053404371570, guid: 43944ea185894854ab76a738d97920b1, type: 2}
+      propertyPath: m_Name
+      value: Web Builder
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114004425137152470, guid: 43944ea185894854ab76a738d97920b1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 43944ea185894854ab76a738d97920b1, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &1817323290 stripped
@@ -1056,7 +1077,7 @@ RectTransform:
   m_GameObject: {fileID: 2065124683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 465, y: 319, z: 90}
-  m_LocalScale: {x: 0.9408411, y: 0.9408411, z: 0.9408411}
+  m_LocalScale: {x: 0.9450288, y: 0.9450288, z: 0.9450288}
   m_Children:
   - {fileID: 1419481650}
   - {fileID: 455397310}

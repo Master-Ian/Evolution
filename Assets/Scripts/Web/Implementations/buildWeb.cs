@@ -5,11 +5,12 @@ using UnityEngine;
 public class buildWeb : MonoBehaviour {
 
     private static int NUMNODES = 31;
+    private Web web;
 
 	// Initialize on startup
 	void Start () {
         // Create an empty web
-        Web web = new Web(NUMNODES);
+        web = new Web(NUMNODES);
 
         // Create a list of Nodes
         web.setNodes(generateNodes());
@@ -18,6 +19,10 @@ public class buildWeb : MonoBehaviour {
         web.setEdges(generateEdges());
 	}
 
+    public Web getWeb()
+    {
+        return web;
+    }
     // Generates an empty edges graph with a given number of nodes
     private int[,] makeBaseEdgeGraph(int numNodes)
     {

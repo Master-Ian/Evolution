@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Web
+public class Web : MonoBehaviour
 {
     private int numNodes;
     private Node[] nodes;  // an array containing all possible nodes
