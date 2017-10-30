@@ -10,6 +10,7 @@ public class StatsBox : TileData
     public GameObject infoPanelPrefab;
     public Text berryFoodPrefab;
     public Text biomePrefab;
+    public Text speciesPrefab;
     public GameObject noClickPrefab;
     public GameObject exitButtonPrefab;
 
@@ -38,19 +39,25 @@ public class StatsBox : TileData
         int numLeaves = getNumLeaves();
         int numMeat = getNumAmbientMeat();
         string biome = getTileType();
+        Dictionary<string, int> presentSpecies = getLocalSpecies();
+
 
         GameObject windowManager = Instantiate(windowManagerPrefab, new Vector3(0, 0, 5), Quaternion.identity) as GameObject;
         windowManager.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
         windowManager.gameObject.tag = "WindowManager";
 
-        string foodTypes = "Berries: " + numBerries.ToString() + "\nGrass: " + numGrass.ToString() + "\nNuts: " + numNuts.ToString() + "\nLeaves: " + numLeaves.ToString() + "\nMeat: " + numMeat.ToString();
+        string foodTypes = "Foods Sources\n" + "\nBerries: " + numBerries.ToString() + "\nGrass: " + numGrass.ToString() + "\nNuts: " + numNuts.ToString() + "\nLeaves: " + numLeaves.ToString() + "\nMeat: " + numMeat.ToString();
         string biomeType = biome;
+  //      string speciesTypes = 
 
-        Text foods = Instantiate(berryFoodPrefab, new Vector3(-200, -50, -5), Quaternion.identity) as Text;
+        Text foods = Instantiate(berryFoodPrefab, new Vector3(-200, -40, -5), Quaternion.identity) as Text;
         foods.transform.SetParent(GameObject.FindGameObjectWithTag("WindowManager").transform, false);
 
-        Text biomeTitle = Instantiate(biomePrefab, new Vector3(0, 125, -5), Quaternion.identity) as Text;
+        Text biomeTitle = Instantiate(biomePrefab, new Vector3(0, 140, -5), Quaternion.identity) as Text;
         biomeTitle.transform.SetParent(GameObject.FindGameObjectWithTag("WindowManager").transform, false);
+
+    //    Text species = Instantiate(speciesPrefab, new Vector3(0, 125, -5), Quaternion.identity) as Text;
+    //    species.transform.SetParent(GameObject.FindGameObjectWithTag("WindowManager").transform, false);
 
         GameObject infoPanel = Instantiate(infoPanelPrefab, new Vector3(0, 0, 5), Quaternion.identity) as GameObject;
         infoPanel.transform.SetParent(GameObject.FindGameObjectWithTag("WindowManager").transform, false);
@@ -64,6 +71,7 @@ public class StatsBox : TileData
         //berryFood = GetComponent<Text>();
         foods.text = foodTypes;
         biomeTitle.text = biomeType;
+    //    species.text = speciesTypes;
 
 
         // }
