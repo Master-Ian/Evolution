@@ -38,9 +38,26 @@ public class Web : MonoBehaviour
         return edges;
     }
 
+    // Gets the node at a given index
     public Node getNode(int index)
     {
         return nodes[index];
+    }
+
+    // Gets all the child node indices of a given node index
+    public List<int> getChildren(int index)
+    {
+        List<int> childList = new List<int>();
+
+        for(int i = 0; i < numNodes; i++)
+        {
+            if(edges[index,i] == 1)
+            {
+                childList.Add(i);
+            }
+        }
+
+        return childList;
     }
 
     // Debug function to print out the web in the console

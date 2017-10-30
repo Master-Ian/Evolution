@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class buildWeb : MonoBehaviour {
+public class buildWeb : MonoBehaviour
+{
 
-    private static int NUMNODES = 31;
+    private static int NUMNODES = 44;
     private Web web;
 
-	// Initialize on startup
-	void Start () {
+    // Initialize on startup
+    void Start()
+    {
         // Create an empty web
         web = new Web(NUMNODES);
 
@@ -17,7 +19,7 @@ public class buildWeb : MonoBehaviour {
 
         // Create an edges graph linking the nodes
         web.setEdges(generateEdges());
-	}
+    }
 
     public Web getWeb()
     {
@@ -71,7 +73,7 @@ public class buildWeb : MonoBehaviour {
         nodes[16] = new Node("Specialized Digestive Tract");
         nodes[17] = new Node("Eats Berries");
         nodes[18] = new Node("Eats Nuts");
-        nodes[19] = new Node("Eats Grass");
+        nodes[19] = new Node("Eats Grass/Seeds");
         nodes[20] = new Node("Eats Leaves");
 
 
@@ -86,6 +88,24 @@ public class buildWeb : MonoBehaviour {
         nodes[28] = new Node("Flapping Ability");  // Webbing
         nodes[29] = new Node("Flight Feathers");
         nodes[30] = new Node("Alula");
+
+        nodes[31] = new Node("Hooked Beak");  // Optimized for meat
+        nodes[32] = new Node("Prying Beak");  // Optimized for fruit/nuts
+        nodes[33] = new Node("Pointed Beak");  // Optimized for seads/plants
+
+        // Glide modifiers
+        nodes[34] = new Node("Improved Glide");
+        nodes[35] = new Node("Improved Glide");
+        nodes[36] = new Node("Improved Glide");
+        nodes[37] = new Node("Improved Glide");
+        nodes[38] = new Node("Improved Glide");
+
+        // Speed modifiers
+        nodes[39] = new Node("Improved Speed");
+        nodes[40] = new Node("Improved Speed");
+        nodes[41] = new Node("Improved Speed");
+        nodes[42] = new Node("Improved Speed");
+        nodes[43] = new Node("Improved Speed");
 
         return nodes;
     }
@@ -106,7 +126,7 @@ public class buildWeb : MonoBehaviour {
         edges[4, 5] = 1;
         edges[5, 6] = 1;
         edges[5, 7] = 1;
-        
+
         edges[3, 8] = 1;
         edges[6, 8] = 1;
         edges[7, 8] = 1;
@@ -118,25 +138,44 @@ public class buildWeb : MonoBehaviour {
         edges[13, 14] = 1;
 
         // Herbivores
-        edges[0,15] = 1;
-        edges[15,16] = 1;
-        edges[16,17] = 1;
-        edges[16,18] = 1;
-        edges[16,19] = 1;
-        edges[19,20] = 1;
+        edges[0, 15] = 1;
+        edges[15, 16] = 1;
+        edges[16, 17] = 1;
+        edges[16, 18] = 1;
+        edges[16, 19] = 1;
+        edges[19, 20] = 1;
 
         //==========AVIARY TREES==========\\
 
-        edges[0,21] = 1;
-        edges[21,22] = 1;
-        edges[22,23] = 1;
-        edges[23,24] = 1;
-        edges[24,25] = 1;
-        edges[24,26] = 1;
-        edges[26,28] = 1;
-        edges[25,27] = 1;
-        edges[27,29] = 1;
-        edges[29,30] = 1;
+        edges[0, 21] = 1;
+        edges[21, 22] = 1;
+        edges[21, 23] = 1;
+        edges[23, 24] = 1;
+        edges[24, 25] = 1;
+        edges[24, 26] = 1;
+        edges[26, 28] = 1;
+        edges[25, 27] = 1;
+        edges[27, 29] = 1;
+        edges[29, 30] = 1;
+
+        // Beak types
+        edges[22, 31] = 1;
+        edges[22, 32] = 1;
+        edges[22, 33] = 1;
+
+        // Wing optimization
+        // -Glide
+        edges[30, 34] = 1;
+        edges[34, 35] = 1;
+        edges[35, 36] = 1;
+        edges[36, 37] = 1;
+        edges[37, 38] = 1;
+        // -Speed
+        edges[30, 39] = 1;
+        edges[39, 40] = 1;
+        edges[40, 41] = 1;
+        edges[41, 42] = 1;
+        edges[42, 43] = 1;
 
         return edges;
     }
