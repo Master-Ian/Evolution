@@ -7,6 +7,7 @@ public class UpdateSpecies : MonoBehaviour {
     public GameObject speciesObject;
     private static int DIMENSION = 10;
     private int mapSize;
+    private List<GameObject> speciesArray;
 
     // Use this for initialization
     public void GenerateSpecies()
@@ -43,6 +44,7 @@ public class UpdateSpecies : MonoBehaviour {
                 gns.Add(j);
                 speciesScript.evolve(true, j);
             }
+            speciesArray.Add(speciesObject);
         }
     }
 
@@ -154,14 +156,22 @@ public class UpdateSpecies : MonoBehaviour {
      */
     private void Reproduce()
     {
-        //  int[] validTiles = 'tiles who have species in them'
-        //  int[] localSpecies = 'species in valid tile';
-        //  for each species in valid tile, species.getMaxPerTile()
-        //  for each species in valid tile, species.getLitterSize()
-        //  for each species in valid tile, species.getMatingFrequency()
-        //  for each species in valid tile, species.getMateAttachment()
-        //  call mutation based on mutation chance * number of offspring
-        //  if population of local species > maxPerTile, Overpopulation()
+        Vector2Int location = new Vector2Int();
+        int population = 0;
+        for (int i = 0; i < speciesArray.Count; i++)    //  Iterates through all alive species, and increases their population in each tile
+        {
+            location = speciesArray[i].GetComponent<Species>().getLocation();
+            population = GameObject.Find("TileList").GetComponent<TileListData>().getTileAtLocation(location).GetComponent<TileData>().getLocalSpecies()[i.ToString()];
+            population += population * speciesArray[i].GetComponent<Species>().getLitterSize();
+            if (population > speciesArray[i].GetComponent<Species>().getMaxPerTile())
+            {
+                Overpopulation(speciesArray[i].GetComponent<Species>(), false, location);
+            }
+            else
+            {
+                GameObject.Find("TileList").GetComponent<TileListData>().getTileAtLocation(location).GetComponent<TileData>().setSpeciesPopulation(i.ToString(), population);
+            }
+        }
     }
 
     /*
